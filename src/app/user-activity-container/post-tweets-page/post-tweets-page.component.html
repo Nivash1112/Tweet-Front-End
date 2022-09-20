@@ -1,0 +1,48 @@
+<app-user-side-bar class="top"></app-user-side-bar>
+
+<div class="container-fluid login px-1 px-md-5 px-lg-1 px-xl-5 mt-4 py-5 mx-auto">
+    
+    <div *ngIf="showElement"  class=" msg mt-1">
+        <div  id="alert-dismissible" class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Tweeted!</strong>
+        </div>
+    </div>
+    
+    <div class="card card0 border-0">
+
+        <div class="container py-3 mt-4" style="text-align: center;">
+          
+            <h3>Post your tweet</h3>
+        </div>
+      
+       
+        <div class="row d-flex">
+            <div class="col-lg-3">
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card2 card border-0 px-4 py-5">
+                    <form class="formgroup" [formGroup]="myFormGroup" (ngSubmit)="postTweet()">
+                        <div style="text-align: center;">
+                            <p *ngIf="tweetEmpty" style="color: red;">Tweet can not be empty !</p>
+                        </div>
+                        <div class="row px-3"> 
+                            <label class="mb-1">                                
+                            <h6 class="mb-0 text-sm">Tweet Description </h6>
+                            </label> 
+                            <textarea class="text-area mb-0 form-control" [formControl]="myFormGroup.controls['tweet']" (keyup) ="tweetLengthValidationMethod()" id="textarea" placeholder="145 charcters only allowed !" maxlength="145" name="textarea" rows="3"></textarea>
+                            <div *ngIf="showTweetLength">
+                                <p *ngIf="showTweetRed" style="color: red;">maximum length obtained !</p>
+                            </div>
+                        </div>
+
+                    
+                        <div class="row mb-3 mt-1 px-3"> 
+                            <button type="submit" class="btn-success text-center">Post Tweet</button> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
